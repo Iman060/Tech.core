@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" href="input.css" />
+        <link rel="stylesheet" href="output.css" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>Tech Care</title>
+    </head>
+
+    <body class="bg-[#F6F7F8]">
+        <header class="w-[90%] m-auto my-3 py-3 bg-white rounded-full">
+            <nav class="w-full flex flex-wrap px-5 items-center justify-between xl:justify-around">
+                <a class="w-[30%] lg:w-[initial]" href="index.htm" title="Home"><img src="img/TestLogo.png" alt="Tech.care Logo" /></a>
+                <ul class="hidden xl:flex gap-10">
+                    <li class="rounded-3xl bg-[#01F0D0] py-3 px-4"><a href="" class="flex gap-1 items-center"> <img class="" src="img/home_FILL0_wght300_GRAD0_opsz24.png" alt="" /> Overview</a></li>
+                    <li class="rounded-3xl hover:bg-[#01F0D0] py-3 px-4"><a href="" class="flex gap-1 items-center"> <img src="img/group_FILL0_wght300_GRAD0_opsz24.png" alt="" /> Patients</a></li>
+                    <li class="rounded-3xl hover:bg-[#01F0D0] py-3 px-4"><a href="" class="flex gap-1 items-center"> <img src="img/calendar_today_FILL0_wght300_GRAD0_opsz24.png" alt="" /> Schedule</a></li>
+                    <li class="rounded-3xl hover:bg-[#01F0D0] py-3 px-4"><a href="" class="flex gap-1 items-center"> <img src="img/chat_bubble_FILL0_wght300_GRAD0_opsz24.png" alt="" /> Message</a></li>
+                    <li class="rounded-3xl hover:bg-[#01F0D0] py-3 px-4"><a href="" class="flex gap-1 items-center"> <img src="img/credit_card_FILL0_wght300_GRAD0_opsz24.png" alt="" /> Transactions</a></li>
+                </ul>
+                <div class="flex flex-wrap justify-center gap-2">
+                    <img src="img/senior-woman-doctor-and-portrait-smile-for-health-2023-11-27-05-18-16-utc.png" alt="Senior" />
+                    <div>
+                        <p class="font-medium ">Dr.Jose Simmons</p>
+                        <p class="text-[#707070] text-sm">General Practitoner</p>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main class="w-[90%] m-auto flex flex-col gap-[1rem] lg:gap-0 lg:flex-row lg:justify-between">
+            <div class="flex lg:w-[20%] justify-between gap-3 overflow-hidden">
+                <div class="bg-white w-full min-h-full rounded-xl py-5 px-4">
+                    <div class="flex justify-between items-center gap-1 overflow-x-hidden">
+                        <h3 id="patients-title" class="hidden text-xl font-bold duration-500">Patients</h3>
+                        <input id="usersSearch" oninput="findUsers()" class="w-full text-sm px-2 rounded-xl outline-none border-2 text-black" type="text" />
+                        <div onclick="searchBar()"><i class="fa-solid fa-magnifying-glass"></i></div>
+                    </div>
+                    <div class="flex flex-col h-[200px] lg:h-[100vh] lg:mt-10 overflow-y-scroll" id="patients"></div>
+                    <div class="userParameters flex lg:hidden bg-white py-5 px-4 flex-col gap-7 rounded-xl"></div>
+                </div>
+            </div>
+            <div class="w-full lg:w-[55%]  rounded-xl flex flex-col gap-7">
+                <div class="bg-white py-5 px-4 rounded-xl flex flex-col gap-5">
+                    <h1 class="text-3xl font-bold my-3">Diagnostic history</h1>
+                    <div class="bg-[#F4F0FE] rounded-xl p-4 flex flex-col">
+                        <div class="flex justify-between">
+                            <h2 class="text-2xl font-medium">Blood pleasure</h2>
+                            <h2 class="text-lg font-thin">Last 6 month</h2>
+                        </div>
+                        <div class="flex flex-col lg:flex-row gap-4">
+                            <div class="w-full lg:w-[70%]"><canvas id="myChart" class="w-max h-[300px] xl:w-[664px]"></canvas></div>
+                            <div>
+                                <div class="flex flex-row lg:flex-col gap-3 justify-evenly w-full lg:w-[200px]">
+                                    <div class="flex flex-col gap-3 w-[200px]">
+                                        <div class="flex items-center gap-1">
+                                            <h2 class="w-3 h-3 rounded-full bg-[#E66FD2]"></h2>
+                                            <h3 class="font-bold">Systolic</h3>
+                                        </div>
+                                        <p id="syscValue" class="text-2xl font-bold"></p>
+                                        <p id="syscLevel"></p>
+                                    </div>
+                                    <div class="lg:mt-4 flex flex-col gap-3 w-[200px]">
+                                        <div class="flex items-center gap-1">
+                                            <h2 class="w-3 h-3 rounded-full bg-[#8C6FE6]"></h2>
+                                            <h3 class="font-bold">Diastolic</h3>
+                                        </div>
+                                        <p id="dyscValue" class="text-2xl font-bold"></p>
+                                        <p id="dyscLevel" class="text-base"></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col sm:grid sm:grid-cols-3 gap-10">
+                        <div class="bg-[#E0F3FA] rounded-xl p-4 flex flex-col gap-3 lg:items-start">
+                            <img src="img/respiratory rate.svg" alt="" />
+                            <div>
+                                <h2 class="font-medium">Respiratory Rate</h2>
+                                <p id="respiratory" class="text-3xl font-bold"></p>
+                            </div>
+                            <p id="resp-level" class=""></p>
+                        </div>
+                        <div class="bg-[#FFE6E9] rounded-xl p-4 flex flex-col gap-3 lg:items-start">
+                            <img src="img/temperature.svg" alt="" />
+                            <div>
+                                <h2 class="font-medium">Temperature</h2>
+                                <p id="temp" class="text-3xl font-bold"></p>
+                            </div>
+                            <p id="temp-level" class="">Normal</p>
+                        </div>
+                        <div class="bg-[#FFE6F1] rounded-xl p-4 flex flex-col gap-3 lg:items-start">
+                            <img src="img/HeartBPM.svg" alt="" />
+                            <div>
+                                <h2 class="font-medium">Heart Rate</h2>
+                                <p id="heart" class="text-3xl font-bold"></p>
+                            </div>
+                            <p id="heart-level" class=""></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white  rounded-xl py-5 px-4">
+                    <div class="flex justify-between bg-[#F6F7F8] px-3 rounded-full py-3">
+                        <p class="font-medium">Problem/Diagnosis</p>
+                        <p class="font-medium">Description</p>
+                        <p class="font-medium">Status</p>
+                    </div>
+                    <div id="diagnosticList" class="h-[200px] overflow-y-scroll"></div>
+                </div>
+            </div>
+
+
+            <div class="lg:w-[23%]  flex flex-col gap-5">
+                <div class="userParameters hidden lg:flex bg-white py-5 px-4 flex-col gap-7 rounded-xl"></div>
+                <div style="height: 250px !important;" class="py-5 px-4 bg-white rounded-xl">
+                    <h2 class="text-2xl font-bold py-4">Lab Results</h2>
+                    <div id="labResults" class="flex flex-col gap-3 h-[150px] overflow-y-scroll px-4"></div>
+                </div>
+            </div>
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="script.js"></script>
+    </body>
+
+</html>
